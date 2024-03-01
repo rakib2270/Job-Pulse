@@ -14,9 +14,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3">
-                    @include('front.account.sidebar')
-                </div>
+                @if(!Auth::check())
+                  <p>Please Login To Post a Job</p>
+                @else
+                    @if (Auth::user()->role == 'admin')
+                        <div class="col-lg-3">
+                            @include('admin.sidebar')
+                        </div>
+                    @elseif (Auth::user()->role == 'employee')
+                        <div class="col-lg-3">
+                            @include('employee.sidebar')
+                        </div>
+                    @elseif (Auth::user()->role == 'candidate')
+                        <div class="col-lg-3">
+                            @include('candidate.sidebar')
+                        </div>
+                    @endif
+                    <a class="btn btn-outline-primary me-2" href="{{ route('account.profile') }}" type="submit">Account</a>
+                @endif
+
+
+
                 <div class="col-lg-9">
                     @include('front.message')
 
