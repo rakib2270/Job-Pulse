@@ -72,7 +72,7 @@ class HomeController extends Controller
             'message' => $request-> input('message')
         ];
 
-        Mail::to("devrakib.io@gmail.com")->send(new ContactFormEmail($mailData));
+        Mail::to("mail.w3web@gmail.com")->send(new ContactFormEmail($mailData));
 
 //        $message = 'Email sent successfully!';
 

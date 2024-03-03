@@ -83,7 +83,6 @@ class AccountController extends Controller
 
     public function profile() {
 
-
         $id = Auth::user()->id;
 
         $user = User::where('id',$id)->first();
@@ -132,7 +131,6 @@ class AccountController extends Controller
         Auth::logout();
         return redirect()->route('account.login');
     }
-
     public function updateProfilePic(Request $request) {
         //dd($request->all());
 
@@ -179,6 +177,7 @@ class AccountController extends Controller
             ]);
         }
     }
+
 
     public function createJob() {
 

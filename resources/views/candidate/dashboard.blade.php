@@ -23,6 +23,13 @@
 
                     <h2  class="mt-3 pb-0">Hello  {{ strtoupper(Auth::user()->name)}}..!!</h2><br>
                     <h1>WELCOME TO DASHBOARD!!</h1>
+                    <h2>Find Your Dream Job Now</h2>
+                    <p>Job Pulse is Always ready to support you. </p>
+                    <p>Please Contact our support team for any help.</p>
+                    <p>We are always able to help you.</p>
+                    <h2>{{ strtoupper(Auth::user()->name)}} You are one of the Topper in Job Pulse</h2>
+                    <p>Happy Journey.</p>
+                    <p>Have a good day.</p>
 
                 </div>
             </div>

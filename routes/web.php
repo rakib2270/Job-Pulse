@@ -35,17 +35,76 @@ Route::get('/jobs/detail/{id}',[JobsController::class,'detail'])->name('jobDetai
 Route::post('/apply-job',[JobsController::class,'applyJob'])->name('applyJob');
 Route::post('/save-job',[JobsController::class,'saveJob'])->name('saveJob');
 
-    // Admin Middleware
+
+
+    // Admin Routes
 Route::group(['prefix' => 'admin','middleware' => 'admin'], function(){
-    Route::get('/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+    Route::get('/dashboard',[AdminController::class,'admin'])->name('admin.dashboard');
+    Route::get('/company/list',[AdminController::class, 'companies'])->name('company.list');
+    // Manage Jobs
+    Route::get('/admin/jobs', [AdminController::class, 'manageJobs'])->name('admin.manageJobs');
+    Route::get('/admin/jobs/create', [AdminController::class, 'createJob'])->name('admin.createJob');
+    Route::post('/admin/jobs/store', [AdminController::class, 'storeJob'])->name('admin.storeJob');
+    Route::get('/admin/jobs/edit/{id}', [AdminController::class, 'editJob'])->name('admin.editJob');
+    Route::put('/admin/jobs/update/{id}', [AdminController::class, 'updateJob'])->name('admin.updateJob');
+    Route::delete('/admin/jobs/delete/{id}', [AdminController::class, 'deleteJob'])->name('admin.deleteJob');
+
+    // Manage Users
+    Route::get('/admin/users', [AdminController::class, 'manageUsers'])->name('admin.manageUsers');
+    Route::get('/admin/users/edit/{id}', [AdminController::class, 'createUser'])->name('admin.createUser');
+    Route::get('/admin/users/edit/{id}', [AdminController::class, 'storeUser'])->name('admin.storeUser');
+    Route::get('/admin/users/edit/{id}', [AdminController::class, 'editUser'])->name('admin.editUser');
+    Route::put('/admin/users/update/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
+    Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+
+    // Manage Companies
+    Route::get('/admin/companies', [AdminController::class, 'manageCompanies'])->name('admin.manageCompanies');
+    Route::get('/admin/companies/create', [AdminController::class, 'createCompany'])->name('admin.createCompany');
+    Route::post('/admin/companies/store', [AdminController::class, 'storeCompany'])->name('admin.storeCompany');
+    Route::get('/admin/companies/edit/{id}', [AdminController::class, 'editCompany'])->name('admin.editCompany');
+    Route::put('/admin/companies/update/{id}', [AdminController::class, 'updateCompany'])->name('admin.updateCompany');
+    Route::delete('/admin/companies/delete/{id}', [AdminController::class, 'deleteCompany'])->name('admin.deleteCompany');
+
+    // Manage Categories
+    Route::get('/admin/categories', [AdminController::class, 'manageCategories'])->name('admin.manageCategories');
+    Route::get('/admin/categories/create', [AdminController::class, 'createCategory'])->name('admin.createCategory');
+    Route::post('/admin/categories/store', [AdminController::class, 'storeCategory'])->name('admin.editCategory');
+    Route::get('/admin/categories/edit/{id}', [AdminController::class, 'editCategory'])->name('admin.editCategory');
+    Route::put('/admin/categories/update/{id}', [AdminController::class, 'updateCategory'])->name('admin.updateCategory');
+    Route::delete('/admin/categories/delete/{id}', [AdminController::class, 'deleteCategory'])->name('admin.deleteCategory');
+
+    // Manage Subscriptions
+    Route::get('/admin/subscriptions', [AdminController::class, 'manageSubscriptions'])->name('admin.manageSubscriptions');
+    Route::get('/admin/subscriptions/edit/{id}', [AdminController::class, 'editSubscription'])->name('admin.editSubscription');
+    Route::put('/admin/subscriptions/update/{id}', [AdminController::class, 'updateSubscription'])->name('admin.updateSubscription');
+    Route::delete('/admin/subscriptions/delete/{id}', [AdminController::class, 'deleteSubscription'])->name('admin.deleteSubscription');
+
+    // Reporting
+    Route::get('/admin/reports', [AdminController::class, 'viewReports'])->name('admin.viewReports');
+
+    // Settings
+    Route::get('/admin/settings', [AdminController::class, 'viewSettings'])->name('admin.viewSettings');
+    Route::post('/admin/settings/update', [AdminController::class, 'updateSettings'])->name('admin.updateSettings');
+
 });
+
+
+
+
+// Employee Routes
 Route::group(['prefix' => 'employee','middleware' => 'employee'], function(){
     Route::get('/dashboard',[EmployeeController::class,'index'])->name('employee.dashboard');
 });
+
+
+
+//  Candidate Routes
 Route::group(['prefix' => 'candidate','middleware' => 'candidate'], function(){
     Route::get('/dashboard',[CandidateController::class,'index'])->name('candidate.dashboard');
 });
 
+
+// Guest Routes
 Route::group(['prefix' => 'account'], function(){
 
     // Guest Route
