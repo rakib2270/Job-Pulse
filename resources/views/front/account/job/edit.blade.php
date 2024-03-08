@@ -43,7 +43,6 @@
                                     <p></p>
                                 </div>
                             </div>
-                            
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="" class="mb-2">Job Type<span class="req">*</span></label>
@@ -51,7 +50,7 @@
                                         <option value="">Select Job Type</option>
                                         @if ($jobTypes->isNotEmpty())
                                             @foreach ($jobTypes as $jobType)
-                                            <option {{ ($job->job_type_id == $jobType->id) ? 'selected' : '' }} value="{{ $jobType->id }}">{{ $jobType->name }}</option>
+                                                <option {{ ($job->job_type_id == $jobType->id) ? 'selected' : '' }} value="{{ $jobType->id }}">{{ $jobType->name }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -79,9 +78,10 @@
 
                             <div class="mb-4">
                                 <label for="" class="mb-2">Description<span class="req">*</span></label>
-                                <textarea class="textarea" name="description" id="description" cols="5" rows="5" placeholder="Description">{{ $job->description }}</textarea>
+                                <textarea class="textarea" name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
                                 <p></p>
                             </div>
+
                             <div class="mb-4">
                                 <label for="" class="mb-2">Benefits</label>
                                 <textarea class="textarea" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits">{{ $job->benefits }}</textarea>
@@ -112,8 +112,8 @@
                                 </select>
                                 <p></p>
                             </div>
-                            
-                            
+
+
 
                             <div class="mb-4">
                                 <label for="" class="mb-2">Keywords</label>
@@ -139,13 +139,13 @@
                                 <label for="" class="mb-2">Website</label>
                                 <input type="text" value="{{ $job->company_website }}" placeholder="Website" id="website" name="website" class="form-control">
                             </div>
-                        </div> 
+                        </div>
                         <div class="card-footer  p-4">
                             <button type="submit" class="btn btn-primary">Update Job</button>
-                        </div>               
+                        </div>
                     </div>
                 </form>
-                               
+
             </div>
         </div>
     </div>
@@ -202,7 +202,7 @@ $("#editJobForm").submit(function(e){
                     .removeClass('invalid-feedback')
                     .html('')
 
-                window.location.href="{{ route('account.myJobs') }}";
+                window.location.href="{{ route('account.myJob') }}";
 
             } else {
                 var errors = response.errors;

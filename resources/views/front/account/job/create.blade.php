@@ -95,24 +95,27 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-4">
-                                    <label for="" class="mb-2">Description<span class="req">*</span></label>
-                                    <textarea class="textarea" name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
-                                    <p></p>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="" class="mb-2">Benefits</label>
-                                    <textarea class="textarea" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="" class="mb-2">Responsibility</label>
-                                    <textarea class="textarea" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"></textarea>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="" class="mb-2">Qualifications</label>
-                                    <textarea class="textarea" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications"></textarea>
-                                </div>
+                                <div class="row">
 
+                                     <div class="mb-4">
+                                        <label for="description" class="mb-2">Description<span class="req">*</span></label>
+                                        <textarea class="textarea" name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
+                                     </div>
+                                    <div class="mb-4">
+                                        <label for="benefits" class="mb-2">Benefits</label>
+                                        <textarea class="textarea" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="responsibility" class="mb-2">Responsibility</label>
+                                        <textarea class="textarea" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"></textarea>
+                                    </div>
+
+
+                                    <div class="mb-4">
+                                        <label for="" class="mb-2">Qualifications</label>
+                                        <textarea class="textarea" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications"></textarea>
+                                    </div>
+                                </div>
                                 <div class="mb-4">
                                     <label for="" class="mb-2">Experience <span class="req">*</span></label>
                                     <select name="experience" id="experience" class="form-control">

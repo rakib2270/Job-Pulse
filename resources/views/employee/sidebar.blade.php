@@ -8,6 +8,7 @@
                 <a href="{{ route('employee.dashboard') }}">Dashboard</a>
             </li>
 
+
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('account.createJob') }}">Post A Job</a>
             </li>
@@ -15,9 +16,6 @@
                 <a href="{{ route('account.myJob') }}">My Jobs</a>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="3">Edit Jobs</a>
-            </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('blogs') }}">Blogs</a>
             </li>
@@ -28,10 +26,15 @@
                 <a href="#">Plugins</a>
             </li>
 
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+               <h4  >  <a href="#">Go To Pro</a></h4>
+            </li>
+
         </ul>
         <div style="margin-top: 300px" class="list-group-item d-flex justify-content-between align-items-center p-3">
             <a href="{{ route('account.logout') }}">Logout</a>
         </div>
     </div>
 </div>
+
 

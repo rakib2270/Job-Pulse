@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('vacancy');
             $table->string('salary');
             $table->date('application_start')->default(now());
-            $table->date('application_end');
+            $table->date('application_end')->default(now());
             $table->string('location');
             $table->text('description')->nullable();
             $table->text('benefits')->nullable();

@@ -16,20 +16,18 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/jobpulse.png')}}" />
 </head>
 <body data-instant-intensity="mousedown">
-<header>
+
 @include('front.layouts.header')
-</header>
+
+
 @yield('main')
 
 @yield('content')
 
 @yield('profile')
 
-<footer class="bg-dark py-3 bg-2">
-    <div class="container">
-        <p class="text-center text-white pt-3 fw-bold fs-6">© 2024 job pulse, all right reserved</p>
-    </div>
-</footer>
+@include('front.layouts.footer')
+
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{'https://code.jquery.com/jquery-3.6.4.min.js'}}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.5.1.3.min.js') }}"></script>
@@ -40,43 +38,10 @@
 <script src="{{ asset('assets/js/main.js')}}"></script>
 <script src="{{'https://unpkg.com/typeit@8.7.1/dist/index.umd.js'}}"></script>
 <script src="{{'https://cdn.datatables.net/2.0.1/js/dataTables.js'}}"></script>
-<script>
-    $('.textarea').trumbowyg();
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $("#profilePicForm").submit(function(e){
-        e.preventDefault();
-
-        var formData = new FormData(this);
-
-        $.ajax({
-            url: '{{ route("account.updateProfilePic") }}',
-            type: 'post',
-            data: formData,
-            dataType: 'json',
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                if(response.status == false) {
-                    var errors = response.errors;
-                    if (errors.image) {
-                        $("#image-error").html(errors.image)
-                    }
-                } else {
-                    window.location.href = '{{ url()->current() }}';
-                }
-            }
-        });
-    });
-</script>
 
 
 @yield('customJs')
+
 </body>
 
 </html>
