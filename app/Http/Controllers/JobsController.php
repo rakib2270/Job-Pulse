@@ -20,7 +20,7 @@ class JobsController extends Controller
         $categories = Category::where('status','=','1')->get();
         $jobTypes = JobType::where('status','=','1')->get();
 
-        $jobs = Job::where('status','=','1');
+        $jobs = Job::where('company_status','1')->where('status','1');
 
         // Search using keyword
         if (!empty($request->keyword)) {
@@ -66,7 +66,7 @@ class JobsController extends Controller
         $jobs = $jobs->paginate(9);
 
 
-        return view('front.jobs',[
+        return view('front.jobs', [
             'categories' => $categories,
             'jobTypes' => $jobTypes,
             'jobs' => $jobs,

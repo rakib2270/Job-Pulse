@@ -1,6 +1,8 @@
 @extends('front.layouts.app')
+<title>JOB PULSE | Profile</title>
 
 @section('main')
+
     <section class="section-5 bg-2">
         <div class="container py-5">
             <div class="row">

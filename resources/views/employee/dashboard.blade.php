@@ -1,36 +1,31 @@
-@extends('front.layouts.app')
+@extends('employee.employee')
 
-@section('main')
-<section class="section-5 bg-2">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </nav>
-            </div>
+@section('emContent')
+    <h3 style="text-align: center; text-decoration: underline" >Dashboard </h3>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <div class="content">
+        <div class="card1">
+            <div class="icon"><i class="material-icons md-36">favorite_border</i></div>
+            <br>
+            <h5 style="color: whitesmoke" >Active Jobs</h5>
+
+            <h3  class="text">{{ $activeJobs }} </h3>
         </div>
-        <div class="row">
-            <p class="h2">Welcome Employer!!</p>
-           <div class="col-lg-3">
-                @include('employee.sidebar')
-            </div>
-            <div class="col-lg-9">
-                @include('front.message')
-                <div class="card border-0 shadow mb-4">
-                   <div class="card-body dashboard text-center">
-                       @include('employee.sidebar')
-
-                   </div>
-                </div>
-            </div>
+        <div class="card1">
+            <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+            <br>
+            <h5 style="color: whitesmoke" >Pending Jobs</h5>
+            <h3  class="text">{{ $pendingJobs }}</h3>
+        </div>
+        <div class="card1">
+            <div class="icon"><i class="material-icons md-36">face</i></div>
+            <br>
+            <h5 style="color: whitesmoke" >Applicants</h5>
+            <h3 class="text">{{ $applicants }}</h3>
         </div>
     </div>
-</section>
-@endsection
 
-@section('customJs')
+
 @endsection

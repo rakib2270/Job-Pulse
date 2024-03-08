@@ -19,16 +19,19 @@ class HomeController extends Controller
         $newCategories = Category::where('status',1)->orderBy('name','ASC')->get();
 
         $featuredJobs = Job::where('status', '=', '1')
+                        ->where('company_status','=', '1')
                         ->where('is_featured','=','1')
                         ->orderBy('created_at','DESC')
                         ->take(6)->get();
 
         $popularJobs = Job::where('status', '=', '1')
+                        ->where('company_status','=', '1')
                         ->where('is_popular','=', '1')
                         ->orderBy('created_at','DESC')
                         ->take(6)->get();
 
         $latestJobs = Job::where('status', '=', '1')
+                        ->where('company_status','=', '1')
                         ->orderBy('created_at', 'desc')
                         ->take(12)->get();
 

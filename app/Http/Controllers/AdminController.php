@@ -5,24 +5,83 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobType;
-
+use App\Models\User;
+use Illuminate\Database\Events\TransactionBeginning;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Pagination;
 
 class AdminController extends Controller
 {
 
-    public function admin() {
-        return view('admin.dashboard');
+    public function admin()
+    {
+        $jobCounts = Job::where('company_status','1')->get()->count();
+        $activeJobs = Job::where('company_status','1')->where('status','1')->get()->count();
+        $pendingJobs = Job::where('company_status','0')->get()->count();
+            return view('admin.dashboard', [
+            'jobCounts'=>$jobCounts,
+            'activeJobs'=>$activeJobs,
+            'pendingJobs'=>$pendingJobs
+            ]);
+
     }
 
+    // Company List
+    public function companyList()
+    {
+        // Retrieve and pass data as needed
+        $companies = Company::all(); // Assuming you have a Company model
+
+        return view('admin.company_list', compact('companies'));
+    }
+
+    // Pages
+    public function pages()
+    {
+        // Your logic for managing pages goes here
+
+        return view('components.pages');
+    }
+
+    // Plugins
+    public function plugins()
+    {
+        // Your logic for managing plugins goes here
+
+        return view('components.plugins');
+    }
+
+
 //   Method To Show All Company list
+
+
+
+
+//Method To Show All Jobs.
+
+    public function adminJobs(){
+        $jobs = Job::all();
+        return view('admin.jobs', [
+            'jobs' => $jobs
+        ]);
+    }
+
 
     // Manage Jobs
     public function manageJobs()
     {
+
+        $users = User::all();
         $jobs = Job::all();
-        return view('front.jobs', compact('jobs'));
+        $categories = Category::all();
+
+        return view('admin.manage_jobs',[
+            'users'=>$users,
+            'jobs'=>$jobs,
+            'categories'=>$categories
+        ]);
+
     }
 
     // Create Job Form
@@ -87,8 +146,9 @@ class AdminController extends Controller
         $job = Job::findOrFail($id);
         $job->update([
             'title' => $request->input('title'),
-            'category_id' => $request->input('category_id'),
-            'job_type_id' => $request->input('job_type_id'),
+            'company_name' => $request->input('company_name'),
+            'company_status' => $request->input('company_status'),
+            'status' => $request->input('status'),
             // Add other fields as needed
         ]);
 
@@ -105,6 +165,30 @@ class AdminController extends Controller
     }
 
 
+
+/* -------------------------------------------------*/
+//  Methods For Company Routes
+/* -------------------------------------------------*/
+
+
+    public function allUsers(){
+         $users = User::all();
+        return view('admin.all-users',[
+            'users'=>$users
+        ]);
+      }
+
+   public function manageEmployee(){
+         $employes = User::all()->where('role','=','employee');
+        return view('admin.employee-list',[
+            'employes'=>$employes
+        ]);
+      }
+
+
+/* -------------------------------------------------*/
+//  Methods For Company Routes
+/* -------------------------------------------------*/
 
 
 

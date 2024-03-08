@@ -17,34 +17,36 @@
         </div>
         @endif
 
+
         <div class="row d-flex justify-content-center">
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
-                    <h1 class="h3">Login</h1>
+                    <h1 class="h3"> Login </h1>
+                    <p style="color: green" id="multipleStrings"></p>
                     <form action="{{ route('account.authenticate') }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="mb-2">Email*</label>
-                            <input type="text" value="{{ old('email') }}"  name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="example@example.com">
+                            <label for="email" class="mb-2"> Email *</label>
+                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="example@example.com">
 
                             @error('email')
                                 <p class="invalid-feedback">{{ $message }}</p>
                             @enderror
 
-                        </div> 
+                        </div>
                         <div class="mb-3">
-                            <label for="" class="mb-2">Password*</label>
+                            <label for="password" class="mb-2">Password*</label>
                             <input type="password" name="password" id="password" class="form-control  @error('password') is-invalid @enderror" placeholder="Enter Password">
-                        
+
                             @error('password')
                                 <p class="invalid-feedback">{{ $message }}</p>
                             @enderror
-                        </div> 
+                        </div>
                         <div class="justify-content-between d-flex">
                         <button class="btn btn-primary mt-2">Login</button>
-                            <a href="forgot-password.html" class="mt-3">Forgot Password?</a>
+                            <a href="#" class="mt-3">Forgot Password?</a>
                         </div>
-                    </form>                    
+                    </form>
                 </div>
                 <div class="mt-4 text-center">
                     <p>Do not have an account? <a  href="{{ route('account.registration') }}">Register</a></p>
@@ -54,4 +56,16 @@
         <div class="py-lg-5">&nbsp;</div>
     </div>
 </section>
+@endsection
+
+@section('customJs')
+    <script>
+        // Multiple String Writer
+
+        new TypeIt("#multipleStrings", {
+            strings: ["This is Multi Type User Login System","Login With Your Email and Password"],
+            speed: 100,
+            waitUntilVisible: true,
+        }).go();
+    </script>
 @endsection

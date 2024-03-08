@@ -12,7 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        /* User Seeder */
+
+        /* Admin Seeder*/
+
+//        \App\Models\User::factory(1)->create();
+
+//        /* User Seeder */
         \App\Models\User::factory(10)->create();
 
         \App\Models\Category::factory(5)->create();
@@ -22,9 +27,6 @@ class DatabaseSeeder extends Seeder
 
 
 
-       /* Admin Seeder*/
-
-//        \App\Models\User::factory(1)->create();
 
     }
 }

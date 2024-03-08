@@ -23,6 +23,19 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        /*  Admin Seeder */
+
+//        return [
+//            'name' =>'Rakib',
+//            'email' => 'devrakib.io@gmail.com',
+//            'email_verified_at' => now(),
+//            'password' => static::$password ??= Hash::make('admin'),
+//            'designation' => 'admin',
+//             'role' => 'admin',
+//            'remember_token' => Str::random(10),
+//        ];
+
+
           /* User Seeder */
 
         return [
@@ -36,17 +49,7 @@ class UserFactory extends Factory
 
 
 
-     /*  Admin Seeder */
 
-//        return [
-//            'name' =>'Rakib',
-//            'email' => 'rakib@admin.com',
-//            'email_verified_at' => now(),
-//            'password' => static::$password ??= Hash::make('password'),
-//            'designation' => 'admin',
-//            'is_admin' => 1,
-//            'remember_token' => Str::random(10),
-//        ];
     }
 
     /**

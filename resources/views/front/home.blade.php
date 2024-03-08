@@ -4,10 +4,18 @@
 <section class="section-0 lazy d-flex bg-image-style dark align-items-center "  class="" data-bg="{{ asset('assets/images/banner5.jpg') }}">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-xl-8">
-                <h1>Find your dream job</h1>
-                <p>Thounsands of jobs available.</p>
-                <div class="banner-btn mt-5"><a href="/jobs" class="btn btn-primary mb-4 mb-sm-0">Explore Now</a></div>
+
+            <div  class="col-12 col-xl-8v ">
+                <div class="typewriter">
+                    <div class="wrapper">
+                        <div class="centeredBox">
+                            <span id="typewriter" data-array=""></span>
+                            <span class="cursor"></span>
+                            <div class="banner-btn mt-5"><a href="/jobs" class="btn btn-outline-primary me-2">Explore Now</a></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -196,4 +204,66 @@
 </section>
 
 
+@endsection
+
+@section('customJs')
+    <script>
+        // The typewriter element
+        var typeWriterElement = document.getElementById('typewriter');
+
+        // The TextArray:
+        var textArray = ["Welcome To Job Pulse.", "Find Your Dream Job","Thousand of Jobs Available.", "Explore Now..."];
+
+        // You can also do this by transfering it through a data-attribute
+        // var textArray = typeWriterElement.getAttribute('data-array');
+
+
+        // function to generate the backspace effect
+        function delWriter(text, i, cb) {
+            if (i >= 0 ) {
+                typeWriterElement.innerHTML = text.substring(0, i--);
+                // generate a random Number to emulate backspace hitting.
+                var rndBack = 10 + Math.random() * 20;
+                setTimeout(function() {
+                    delWriter(text, i, cb);
+                },rndBack);
+            } else if (typeof cb == 'function') {
+                setTimeout(cb,1000);
+            }
+        };
+
+        // function to generate the keyhitting effect
+        function typeWriter(text, i, cb) {
+            if ( i < text.length+1 ) {
+                typeWriterElement.innerHTML = text.substring(0, i++);
+                // generate a random Number to emulate Typing on the Keyboard.
+                var rndTyping = 100 - Math.random() * 20;
+                setTimeout( function () {
+                    typeWriter(text, i++, cb)
+                },rndTyping);
+            } else if (i === text.length+1) {
+                setTimeout( function () {
+                    delWriter(text, i, cb)
+                },1000);
+            }
+        };
+
+        // the main writer function
+        function StartWriter(i) {
+            if (typeof textArray[i] == "undefined") {
+                setTimeout( function () {
+                    StartWriter(0)
+                },1000);
+            } else if(i < textArray[i].length+1) {
+                typeWriter(textArray[i], 0, function () {
+                    StartWriter(i+1);
+                });
+            }
+        };
+        // wait one second then start the typewriter
+        setTimeout( function () {
+            StartWriter(0);
+        },1000);
+
+    </script>
 @endsection

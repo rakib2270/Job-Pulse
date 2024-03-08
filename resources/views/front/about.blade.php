@@ -7,13 +7,14 @@
     <section class="section-0 lazy d-flex bg-image-style dark align-items-center mb-4"  class="" data-bg="{{ asset('assets/images/banner3.jpg') }}">
         <div class="container">
             <div class="row">
-                <div class="col-20 col-xl-8 ">
                     <h1>About Us</h1>
-                    <p class="text-gray-700 mb-8">
-                        Welcome to Job Pulse, your go-to platform for connecting employers and job seekers. At Job Pulse, we believe in making the job search and recruitment process efficient and effective.
-                    </p>
+                    <div class="typewriter">
+                            <p class="text-gray-700 mb-8">
+                                Job Pulse is your go-to platform for connecting employers and job seekers.
+                        </p>
+                    </div>
+
                     <div class="banner-btn mt-5"><a href="#" class="btn btn-primary mb-4 mb-sm-0">Learn More...</a></div>
-                </div>
             </div>
         </div>
     </section>

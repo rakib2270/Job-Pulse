@@ -33,8 +33,8 @@
                         @if (Auth::user()->role == 'admin')
                             <a class="btn btn-outline-primary me-2" href="{{ route('admin.dashboard') }}" type="submit">Admin</a>
                         @elseif (Auth::user()->role == 'employee')
+                            <a class="btn btn-outline-primary me-2" href="{{ route('account.createJob') }}" type="submit">Post a Job</a>
                             <a class="btn btn-outline-primary me-2" href="{{ route('employee.dashboard') }}" type="submit">Dashboard</a>
-                            <a class="btn btn-primary" href="{{ route('account.createJob') }}" type="submit">Post a Job</a>
                         @elseif (Auth::user()->role == 'candidate')
                             <a class="btn btn-outline-primary me-2" href="{{ route('candidate.dashboard') }}" type="submit">Dashboard</a>
                         @endif
@@ -44,7 +44,7 @@
 
                 </div>
             </div>
-        </nav>
+        </nav>+
 
 </section>
 

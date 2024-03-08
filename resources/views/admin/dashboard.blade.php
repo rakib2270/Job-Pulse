@@ -1,28 +1,31 @@
+@extends('admin.admin')
 
-@extends('front.layouts.app')
+@section('dbContent')
+    <h3 style="text-align: center; text-decoration: underline" >Dashboard </h3>
 
-@section('main')
-    <section class="section-5 bg-2">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Account Settings</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            <div  class="row">
-                <div class="col-lg-3">
-                    @include('admin.sidebar')
-                </div>
-                <div style="height: 600px" class="col-lg-9">
-                    @include('front.message')
-                    @yield('dashboard')
-                </div>
-            </div>
-        </div>
-    </section>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <div class="content">
+           <div class="card1">
+               <div class="icon"><i class="material-icons md-36">favorite_border</i></div>
+               <br>
+               <h5 style="color: whitesmoke" >Active Companies</h5>
+
+               <h3  class="text">{{ $jobCounts }} </h3>
+           </div>
+           <div class="card1">
+               <div class="icon"><i class="material-icons md-36">alternate_email</i></div>
+               <br>
+               <h5 style="color: whitesmoke" >Pending Companies</h5>
+               <h3  class="text">{{ $pendingJobs }}</h3>
+           </div>
+           <div class="card1">
+               <div class="icon"><i class="material-icons md-36">face</i></div>
+               <br>
+               <h5 style="color: whitesmoke" >Active Jobs</h5>
+               <h3 class="text">{{ $activeJobs }}</h3>
+           </div>
+    </div>
+
+
 @endsection

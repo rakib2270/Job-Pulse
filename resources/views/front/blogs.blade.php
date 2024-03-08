@@ -11,7 +11,7 @@
                 <div class="col-20 col-xl-8 ">
                     <h1>Blogs</h1>
                     <p class="text-gray-700 mb-8">
-                        Welcome to Job Pulse, your go-to platform for connecting employers and job seekers. At Job Pulse, we believe in making the job search and recruitment process efficient and effective.
+                    <p id="multipleStrings"></p>
                     </p>
                     <div class="banner-btn mt-5"><a href="#" class="btn btn-primary mb-4 mb-sm-0">Learn More...</a></div>
                 </div>
@@ -61,3 +61,17 @@
     </div>
 
 @endsection
+
+@section('customJs')
+    <script>
+        // Multiple String Writer
+
+        new TypeIt("#multipleStrings", {
+            strings: ["Welcome to Job Pulse.", "Job Pulse is Your go-to platform for connecting employers and job seekers.","At Job Pulse we believe in making the job search and recruitment process efficient and effective."],
+            speed: 50,
+            waitUntilVisible: true,
+        }).go();
+    </script>
+@endsection
+
+

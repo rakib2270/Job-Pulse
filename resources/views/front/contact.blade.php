@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-12 col-xl-8">
                     <h1>Contact Us</h1>
-                    <p>We are able to help you. Please Contact with me for any help to related this.</p>
+                    <p id="multipleStrings"></p>
                 </div>
             </div>
         </div>
@@ -100,4 +100,17 @@
 
     <!-- End Contact Section -->
 
+
+@endsection
+
+@section('customJs')
+    <script>
+        // Multiple String Writer
+
+        new TypeIt("#multipleStrings", {
+            strings: ["We are able to help you.", "Please Contact us for any help."],
+            speed: 50,
+            waitUntilVisible: true,
+        }).go();
+    </script>
 @endsection

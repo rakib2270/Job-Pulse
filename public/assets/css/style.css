@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+
 @charset "UTF-8";
 /* Colours */
 /* Fonts */
@@ -9573,44 +9575,44 @@ label .req {
 footer .nav-link {
   color: #A8DF8E;
 }
-.section-5 .card .thead, .section-5 .card tbody, .section-5 .card tfoot, .section-5 .card tr, .section-5 .card td, .section-5 .card th {
+.section-5 .card1 .thead, .section-5 .card1 tbody, .section-5 .card1 tfoot, .section-5 .card1 tr, .section-5 .card1 td, .section-5 .card1 th {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
-.section-5 .card .info1 {
+.section-5 .card1 .info1 {
   font-family: 'Inter-SemiBold';
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.section-5 .card .action-dots a {
+.section-5 .card1 .action-dots a {
   position: relative;
   top: 10px;
 }
-.section-5 .card .action-dots a i {
+.section-5 .card1 .action-dots a i {
   font-size: 20px;
   color: rgba(43, 43, 43, 0.35);
 }
-.section-5 .card .dropdown-menu {
+.section-5 .card1 .dropdown-menu {
   min-width: 0px;
   padding: 0px;
 }
-.section-5 .card .dropdown-menu .dropdown-item {
+.section-5 .card1 .dropdown-menu .dropdown-item {
   padding: 10px 40px 10px 15px;
 }
-.section-5 .card .dropdown-menu .dropdown-item:hover {
+.section-5 .card1 .dropdown-menu .dropdown-item:hover {
   background: #A8DF8E;
   color: #ffffff;
 }
-.section-5 .card .dropdown-menu .dropdown-item:hover i {
+.section-5 .card1 .dropdown-menu .dropdown-item:hover i {
   color: #ffffff;
 }
-.section-5 .card .dropdown-menu a {
+.section-5 .card1 .dropdown-menu a {
   top: 0px;
 }
-.section-5 .card .dropdown-menu a i {
+.section-5 .card1 .dropdown-menu a i {
   font-size: 18px;
   padding-right: 10px;
 }
-.section-5 .card-form textarea {
+.section-5 .card1-form textarea {
   height: auto;
 }
 .section-5 .account-nav ul li a {
@@ -10035,3 +10037,436 @@ footer .nav-link {
   align-items: center;
   display: flex;
 }
+
+
+/* JS Type Writer */
+
+.wrapper {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 60px;
+}
+
+.centeredBox {
+    width: 100%;
+    text-align: center;
+}
+
+/* The Typewriter */
+
+#typewriter  {
+
+}
+
+.cursor {
+    border-left: 4px solid white;
+}
+/*End JS Type writer*/
+
+
+/*Css Typewriter*/
+.typewriter p {
+    color: #fff;
+    font-family: monospace;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .30em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .5em; /* Adjust as needed */
+    animation:
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+}.typewriter p {
+     color: #fff;
+     font-family: monospace;
+     overflow: hidden; /* Ensures the content is not revealed until the animation */
+     border-right: .15em solid orange; /* The typwriter cursor */
+     white-space: nowrap; /* Keeps the content on a single line */
+     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+     letter-spacing: .15em; /* Adjust as needed */
+     animation:
+         typing 5s steps(30, end),
+         blink-caret 1.5s step-end infinite;
+ }
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/*End CSS Type Writer*/
+
+
+
+
+/* Cart1 Design*/
+
+.about {
+
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+    right: 10px;
+    width: $size;
+    height: $size;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transition: all 0.2s ease;
+
+    .bg_links {
+        width: $size;
+        height: $size;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(#fff, 0.2);
+        border-radius: 100%;
+        backdrop-filter: blur(5px);
+        position: absolute;
+    }
+
+    .logo {
+        width: $size;
+        height: $size;
+        z-index: 9;
+        background-image: url(https://rafaelalucas91.github.io/assets/codepen/logo_white.svg);
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: 10px 7px;
+        opacity: 0.9;
+        transition: all 1s 0.2s ease;
+        bottom: 0;
+        right: 0;
+    }
+
+    .social {
+        opacity: 0;
+        right: 0;
+        bottom: 0;
+
+        .icon {
+            width: 100%;
+            height: 100%;
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: transparent;
+            display: flex;
+            transition: all 0.2s ease, background-color 0.4s ease;
+            opacity: 0;
+            border-radius: 100%;
+        }
+
+
+
+
+    }
+
+    &:hover {
+        width: 105px;
+        height: 105px;
+        transition: all $transition;
+
+        .logo {
+            opacity: 1;
+            transition: all 0.6s ease;
+        }
+
+        .social {
+            opacity: 1;
+
+            .icon {
+                opacity: 0.9;
+            }
+
+            &:hover {
+                background-size: 28px;
+                .icon {
+                    background-size: 65%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.wrapper1 {
+    width: 100vw;
+    margin: 0 auto;
+    height: 400px;
+    background-color: #161616;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 767px) {
+    .wrapper {
+        height: 700px;
+    }
+}
+
+.content {
+    max-width: 1024px;
+    width: 100%;
+    padding: 0 4%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .content {
+        padding-top: 300px;
+        flex-direction: column;
+    }
+}
+
+.card1 {
+    width: 100%;
+    max-width: 300px;
+    min-width: 200px;
+    height: 250px;
+    background-color: #292929;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.24);
+    border: 2px solid rgba(7, 7, 7, 0.12);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.icon {
+    margin: 0 auto;
+    width: 100%;
+    height: 80px;
+    max-width:80px;
+    background: linear-gradient(90deg, #FF7E7E 0%, #86e79b 40%, rgba(0, 0, 0, 0.28) 60%);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: all 0.8s ease;
+    background-position: 0px;
+    background-size: 200px;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.card1 .title {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.card1 .text {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    color: tomato;
+    font-weight: 400;
+    letter-spacing: 2px;
+    opacity: 0;
+    max-height:0;
+    transition: all 0.3s ease;
+}
+
+.card1:hover {
+    height: 270px;
+}
+
+.card1:hover .info {
+    height: 90%;
+}
+
+.card1:hover .text {
+    transition: all 0.3s ease;
+    opacity: 1;
+    max-height:40px;
+}
+
+.card1:hover .icon {
+    background-position: -120px;
+    transition: all 0.3s ease;
+}
+
+.card1:hover .icon i {
+    background: linear-gradient(90deg, #FF7E7E, #FF4848);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+
+/*CSS For Table Design*/
+
+
+strong {
+    font-weight: bold;
+}
+
+.manage-table {
+    max-width: 1000px;
+    height: auto;
+    overflow: auto;
+    position: relative;
+    padding: 15px;
+}
+.tb-btn {
+    width: auto;
+    height: auto    ;
+    position: absolute;
+}
+table {
+    background: #e1dede;
+    border-collapse: collapse;
+    box-shadow: inset 0 1px 0 #a8a8a8;
+    font-size: 12px;
+    line-height: 24px;
+    margin: 30px auto;
+    text-align: left;
+    max-width: 1000px;
+    overflow: hidden;
+    min-width:800px;
+    cursor: pointer;
+  ;
+}
+
+th {
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#151515, #04395b);
+    border-left: 1px solid #555;
+    border-right: 1px solid #777;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #333;
+    box-shadow: inset 0 1px 0 #d3d2d2;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px;
+    position: relative;
+    text-shadow: 0 1px 0 #000;
+    text-align: center;
+    font-size: medium;
+}
+
+th:after {
+    background: linear-gradient(rgba(255,255,255,0), rgba(214, 207, 207, 0.9));
+    content: '';
+    display: block;
+    height: 25%;
+    left: 0;
+    margin: 1px 0 0 0;
+    position: absolute;
+    top: 25%;
+
+}
+
+th:first-child {
+    border-left: 1px solid #777;
+    box-shadow: inset 1px 1px 0 #999;
+}
+
+th:last-child {
+    box-shadow: inset -1px 1px 0 #999;
+}
+tr:hover {
+    color: black;
+    background-color: whitesmoke;
+}
+
+
+td {
+
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    padding: 0;
+    position: relative;
+    transition: all 300ms;
+    max-width: 170px;
+}
+
+.form-control{
+    background: #ddd8d8;
+}
+td:first-child {
+    box-shadow: inset 1px 0 0 #000000;
+}
+
+td:last-child {
+    border-right: 1px solid #949393;
+    box-shadow: inset -1px 0 0 #929292;
+}
+
+tr {
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:nth-child(odd) td {
+    background: #979797 url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:last-of-type td {
+    box-shadow: inset 0 -1px 0 #979797;
+}
+
+tr:last-of-type td:first-child {
+    box-shadow: inset 1px -1px 0 #999999;
+}
+
+tr:last-of-type td:last-child {
+    box-shadow: inset -1px -1px 0 #878787;
+}
+
+tbody:hover td {
+    text-shadow: 0 0 3px #848080;
+}
+
+tbody:hover tr:hover td {
+
+    color: #444;
+    text-shadow: 0 1px 0 #888888;
+}
+
