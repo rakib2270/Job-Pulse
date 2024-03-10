@@ -351,7 +351,6 @@ class AccountController extends Controller
 
     public function updatePassword(Request $request){
         $validator = Validator::make($request->all(),[
-            'old_password' => 'required',
             'new_password' => 'required|min:5',
             'confirm_password' => 'required|same:new_password',
         ]);
@@ -363,12 +362,12 @@ class AccountController extends Controller
             ]);
         }
 
-        if (Hash::check($request->old_password, Auth::user()->password) == false){
-            session()->flash('error','Your old password is incorrect.');
-            return response()->json([
-                'status' => true
-            ]);
-        }
+//        if (Hash::check($request->old_password, Auth::user()->password) == false){
+//            session()->flash('error','Your old password is incorrect.');
+//            return response()->json([
+//                'status' => true
+//            ]);
+//        }
 
 
         $user = User::find(Auth::user()->id);

@@ -22,7 +22,9 @@
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
                     <h1 class="h3"> Login </h1>
-                  <p style="color: green" id="multipleStrings"></p>  {{-- This Line is Used For Typewriter --}}
+                    <div class="types" style="height: 100px">
+                        <p style="color: green" id="multipleStrings"></p>  {{-- This Line is Used For Typewriter --}}
+                    </div>
                     <form action="{{ route('account.authenticate') }}" method="post">
                         @csrf
                         <div class="mb-3">
@@ -64,7 +66,7 @@
 
         new TypeIt("#multipleStrings", {
             strings: ["Hello Dear,","We are Happy to See You","Please Login With Your Email and Password"],
-            speed: 100,
+            speed: 20,
             waitUntilVisible: true,
         }).go();
     </script>

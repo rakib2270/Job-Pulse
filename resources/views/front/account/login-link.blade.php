@@ -23,11 +23,13 @@
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
                     <h1 class="h3"> Login With Magic Link </h1>
-                  <p style="color: green" id="multipleStrings"></p>  {{-- This Line is Used For Typewriter --}}
+                    <div class="types" style="height: 120px">
+                        <p style="color: green" id="multipleStrings"></p>  {{-- This Line is Used For Typewriter --}}
+                    </div>
+
                     <form action="{{ route('magicLink.login') }}" method="post">
                         @csrf
                         <div class="mb-3">
-                            <label for="email" class="mb-2"> Enter Your Email *</label>
                             <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="example@example.com">
 
                             @error('email')
@@ -52,8 +54,8 @@
         // Multiple String Writer
 
         new TypeIt("#multipleStrings", {
-            strings: ["Hello Dear,","We are Happy to See You","Please Login With Your Email and Password"],
-            speed: 100,
+            strings: ["Hello Dear,","If You Forget Your Password!", "Don't Worry, You Can Easily Login With Magic Link","Give Your Email Please."],
+            speed: 20,
             waitUntilVisible: true,
         }).go();
     </script>

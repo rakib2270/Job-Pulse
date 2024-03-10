@@ -54,11 +54,7 @@
                         <form action="" method="post" id="changePasswordForm" name="changePasswordForm">
                             <div class="card-body p-4">
                                 <h3 class="fs-4 mb-1">Change Password</h3>
-                                <div class="mb-4">
-                                    <label for="" class="mb-2">Old Password*</label>
-                                    <input type="password" name="old_password" id="old_password" placeholder="Old Password" class="form-control">
-                                    <p></p>
-                                </div>
+
                                 <div class="mb-4">
                                     <label for="" class="mb-2">New Password*</label>
                                     <input type="password" name="new_password" id="new_password" placeholder="New Password" class="form-control">
@@ -172,18 +168,6 @@
 
                     } else {
                         var errors = response.errors;
-
-                        if (errors.old_password) {
-                            $("#old_password").addClass('is-invalid')
-                                .siblings('p')
-                                .addClass('invalid-feedback')
-                                .html(errors.old_password)
-                        } else {
-                            $("#old_password").removeClass('is-invalid')
-                                .siblings('p')
-                                .removeClass('invalid-feedback')
-                                .html('')
-                        }
 
                         if (errors.new_password) {
                             $("#new_password").addClass('is-invalid')
