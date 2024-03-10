@@ -1,38 +1,30 @@
 
-@extends('front.layouts.app')
+@extends('candidate.candidate')
 
-@section('main')
-    <section class="section-5 bg-2">
+@section('cnContent')
+    <section class="section-6 bg-2">
         <div class="container py-5">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Account Settings</li>
-                            </ol>
-                    </nav>
                 </div>
-            </div>
-            <div  class="row">
-                <div class="col-lg-3">
-                    @include('candidate.sidebar')
-                </div>
-                <div style="height: 600px" class="col-lg-9">
                     @include('front.message')
 
-                    <h2  class="mt-3 pb-0">Hello  {{ strtoupper(Auth::user()->name)}}..!!</h2><br>
                     <h1>WELCOME TO DASHBOARD!!</h1>
-                    <h2>Find Your Dream Job Now</h2>
-                    <p>Job Pulse is Always ready to support you. </p>
-                    <p>Please Contact our support team for any help.</p>
-                    <p>We are always able to help you.</p>
-                    <h2>{{ strtoupper(Auth::user()->name)}} You are one of the Topper in Job Pulse</h2>
-                    <p>Happy Journey.</p>
-                    <p>Have a good day.</p>
+                    <h2>What's The Benefit For an Applicant To Apply Using Job Pulse?</h2>
+                    <p style="color: green" id="multipleStrings"></p>
 
                 </div>
-            </div>
         </div>
     </section>
+@endsection
+
+@section('customJs')
+    <script>
+        // Multiple String Writer
+
+        new TypeIt("#multipleStrings", {
+            strings: ["1 : Diverse Opportunities:","Job Pulse opens doors to a wide array of job opportunities, enabling applicants to explore and apply for roles across diverse industries."," ", "2 : Effortless Navigation:", "With an intuitive and user-friendly interface, Job Pulse simplifies the job search process, ensuring applicants can easily browse and apply for positions tailored to their skills."," "," "," 3 : Career Guidance: ", "Job Pulse goes beyond job listings, providing valuable career development resources, including resume building tips and interview strategies, to support applicants in their professional journey." ," ", "4 : Direct Employer Connections: ", "Job Pulse facilitates direct communication with employers, fostering networking opportunities and enhancing applicants' chances of securing meaningful employment."  ],
+            speed: 10,
+            waitUntilVisible: true,
+        }).go();
+    </script>
+
 @endsection

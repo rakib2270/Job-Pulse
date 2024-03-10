@@ -39,6 +39,41 @@
 <script src="{{'https://unpkg.com/typeit@8.7.1/dist/index.umd.js'}}"></script>
 <script src="{{'https://cdn.datatables.net/2.0.1/js/dataTables.js'}}"></script>
 
+<script type="text/javascript">
+
+    $('.textarea').trumbowyg();
+
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+    $("#profilePicForm").submit(function(e){
+    e.preventDefault();
+
+    var formData = new FormData(this);
+
+    $.ajax({
+    url: '{{ route("account.updateProfilePic") }}',
+    type: 'post',
+    data: formData,
+    dataType: 'json',
+    contentType: false,
+    processData: false,
+    success: function(response) {
+    if(response.status == false) {
+    var errors = response.errors;
+    if (errors.image) {
+    $("#image-error").html(errors.image)
+    }
+    } else {
+    window.location.href = '{{ url()->current() }}';
+    }
+    }
+    });
+    });
+</script>
 
 @yield('customJs')
 

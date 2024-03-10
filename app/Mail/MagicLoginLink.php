@@ -3,26 +3,25 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Mail\Attachable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ContactFormEmail extends Mailable
+class MagicLoginLink extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $mailData;
-
+    public $url;
     /**
      * Create a new message instance.
      */
-    public function __construct($mailData)
+    public function __construct(string $email)
     {
-        $this->mailData = $mailData;
+        // $this->email = $email;
+        $this->url = URL::temporarySignedRoute('auth.session', now()->addMinutes(5), ['user' => $email]);
     }
 
     /**
@@ -31,7 +30,7 @@ class ContactFormEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Form Email',
+            subject: 'Magic Login Link',
         );
     }
 
@@ -41,7 +40,7 @@ class ContactFormEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.contact-form-email',
+            markdown: 'email.magic_login_link',
         );
     }
 
@@ -52,8 +51,6 @@ class ContactFormEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

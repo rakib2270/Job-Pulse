@@ -7,6 +7,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Password;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +46,10 @@ Route::group(['prefix' => 'account'], function(){
         Route::get('/register',[AccountController::class,'registration'])->name('account.registration');
         Route::post('/process-register',[AccountController::class,'processRegistration'])->name('account.processRegistration');
         Route::post('/authenticate',[AccountController::class,'authenticate'])->name('account.authenticate');
+        Route::get('magic/login-page',[AccountController::class,'magicLoginPage'])->name('magic.loginPage');
+        Route::post('/magicLink/login', [AccountController::class, 'getLoginLink'])->name('magicLink.login');
+        Route::get('auth/session/{user:email}', [AccountController::class, 'loginByMagicLink'])->name('auth.session')->middleware(['signed', 'guest']);
+
     });
 
 
@@ -140,6 +146,9 @@ Route::group(['prefix' => 'employee','middleware' => 'employee', 'admin'], funct
 //  Candidate Routes
 Route::group(['prefix' => 'candidate','middleware' => 'candidate'], function(){
     Route::get('/dashboard',[CandidateController::class,'index'])->name('candidate.dashboard');
+    Route::get('/upload-resume', [CandidateController::class, 'showUploadForm'])->name('resumes.showUploadForm');
+    Route::post('/upload-resume', [CandidateController::class, 'upload'])->name('resume.upload');
+
 });
 
 

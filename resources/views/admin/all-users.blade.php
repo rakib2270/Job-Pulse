@@ -1,7 +1,7 @@
 @extends('admin.admin')
 
 @section('dbContent')
-    <h3 style="text-align: center; text-decoration: underline" >Employee List </h3>
+    <h3 style="text-align: center; text-decoration: underline" >All Users </h3>
 
 
     <!-- Table with panel -->

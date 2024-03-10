@@ -9,15 +9,16 @@
             </li>
 
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="{{ route('admin.allUsers') }}">See Users</a>
+                <a href="{{ route('admin.allUsers') }}">All Users</a>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <a href="{{ route('admin.manageEmployee') }}">All Employers</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('admin.jobs') }}">Jobs</a>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="{{ route('admin.manageEmployee') }}">Employee List</a>
-            </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('blogs') }}">Blogs</a>
             </li>

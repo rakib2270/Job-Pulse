@@ -69,7 +69,9 @@
                         </div>
                         @endif
                         <div class="border-bottom"></div>
-                        <div class="pt-3 text-end">
+                        <form action="" method="Post" >
+                            @csrf
+                            <div class="pt-3 text-end">
 
                             @if (Auth::check())
                                 <a href="#" onclick="saveJob({{ $job->id }});" class="btn btn-secondary">Save</a>
@@ -83,10 +85,12 @@
                                 <a href="javascript:void(0);" class="btn btn-primary disabled">Login to Apply</a>
                             @endif
 
-
                         </div>
+                        </form>
+
                     </div>
                 </div>
+
 
                 @if (Auth::user())
                    @if (Auth::user()->id == $job->user_id)
@@ -167,11 +171,11 @@
                                 <li>Name: <span>{{ $job->company_name }}</span></li>
 
                                 @if (!empty($job->company_location))
-                                <li>Locaion: <span>{{ $job->company_location }}</span></li>
+                                <li>Location: <span>{{ $job->company_location }}</span></li>
                                 @endif
 
                                 @if (!empty($job->company_website))
-                                <li>Webite: <span><a href="{{ $job->company_website }}" target="_blank">{{ $job->company_website }}</a></span></li>
+                                <li>Website: <span><a href="{{ $job->company_website }}" target="_blank">{{ $job->company_website }}</a></span></li>
                                 @endif
 
                             </ul>

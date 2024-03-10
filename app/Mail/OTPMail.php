@@ -3,26 +3,22 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Mail\Attachable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactFormEmail extends Mailable
+class OTPMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $mailData;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($mailData)
+    public function __construct()
     {
-        $this->mailData = $mailData;
+        //
     }
 
     /**
@@ -31,7 +27,7 @@ class ContactFormEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Form Email',
+            subject: 'O T P Mail',
         );
     }
 
@@ -41,7 +37,7 @@ class ContactFormEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.contact-form-email',
+            view: 'view.name',
         );
     }
 
@@ -52,8 +48,6 @@ class ContactFormEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

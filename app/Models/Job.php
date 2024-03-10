@@ -9,6 +9,7 @@ class Job extends Model
 {
     use HasFactory;
 
+
     public function jobType() {
         return $this->belongsTo(JobType::class);
     }
@@ -20,4 +21,6 @@ class Job extends Model
     public function applications() {
         return $this->hasMany(JobApplication::class);
     }
+
+
 }

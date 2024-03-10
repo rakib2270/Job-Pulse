@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MagicLoginLink;
 use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobType;
 use App\Models\SavedJob;
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
-
 class AccountController extends Controller
 {
     // This method will show user registration page
@@ -26,6 +29,7 @@ class AccountController extends Controller
     // This method will save a user
     public function processRegistration(Request $request) {
         $validator = Validator::make($request->all(),[
+            'role'=>'required',
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:5|same:confirm_password',
@@ -35,10 +39,10 @@ class AccountController extends Controller
         if ($validator->passes()) {
 
             $user = new User();
+            $user->role = $request->role;
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            $user->name = $request->name;
             $user->save();
 
             session()->flash('success','You have registerd successfully.');
@@ -55,6 +59,9 @@ class AccountController extends Controller
             ]);
         }
     }
+
+
+
 
     // This method will show user login page
     public function login() {
@@ -80,6 +87,38 @@ class AccountController extends Controller
                 ->withInput($request->only('email'));
         }
     }
+
+
+
+
+
+//    Login With Magic Link
+
+    public function magicLoginPage() {
+        return view('front.account.login-link');
+    }
+
+    public function getLoginLink(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email|exists:users',
+        ]);
+
+        Mail::to($request->email)->send(mailable: new MagicLoginLink($request->email));
+
+
+        return back()->with('success','We have sent a magic link to your email');
+    }
+
+
+    public function loginByMagicLink( User $user){
+
+        auth()->login($user);
+        return redirect()->route('account.profile');
+    }
+
+
+
+
 
     public function profile() {
 
@@ -137,7 +176,7 @@ class AccountController extends Controller
         $id = Auth::user()->id;
 
         $validator = Validator::make($request->all(),[
-            'image' => 'required|image'
+            'image' => 'nullable|mimes:image,png,jpg,jpeg,svg,webp',
         ]);
 
         if ($validator->passes()) {

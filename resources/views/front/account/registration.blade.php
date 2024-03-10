@@ -9,12 +9,13 @@
                     <div class="card shadow border-0 p-5">
                         <h1 class="h3">Register</h1>
                         <form action="" name="registrationForm" id="registrationForm">
+                            @csrf
                             <div class="mb-3">
                                 <label for="" class="mb-2">User Type*</label>
-                                <select style="width: 100%;" >
+                                <select name="role" id="role" style="width: 100%;" >
                                     <option > Select </option>
-                                    <option name="role" id="role" value="candidate" > Applicant</option>
-                                    <option name="role" id="role" value="employee" > Employee </option>
+                                    <option  value="candidate" > Applicant</option>
+                                    <option value="employee" > Employee </option>
                                 </select>
                             </div>
 

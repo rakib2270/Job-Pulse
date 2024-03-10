@@ -87,40 +87,6 @@
 
     <script type="text/javascript">
 
-            $('.textarea').trumbowyg();
-
-            $.ajaxSetup({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-
-            $("#profilePicForm").submit(function(e){
-            e.preventDefault();
-
-            var formData = new FormData(this);
-
-            $.ajax({
-            url: '{{ route("account.updateProfilePic") }}',
-            type: 'post',
-            data: formData,
-            dataType: 'json',
-            contentType: false,
-            processData: false,
-            success: function(response) {
-            if(response.status == false) {
-            var errors = response.errors;
-            if (errors.image) {
-            $("#image-error").html(errors.image)
-        }
-        } else {
-            window.location.href = '{{ url()->current() }}';
-        }
-        }
-        });
-        });
-
-
 
 
         $("#userForm").submit(function(e){

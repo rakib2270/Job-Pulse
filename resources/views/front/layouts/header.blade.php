@@ -46,7 +46,7 @@
 
                 </div>
             </div>
-        </nav>+
+        </nav>
 </header>
 </section>
 

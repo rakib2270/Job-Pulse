@@ -6,13 +6,14 @@
                     @include('front.message')
 
                     <form action="" method="post" id="createJobForm" name="createJobForm">
+                        @csrf
                         <div class="card border-0 shadow mb-4 ">
                             <div class="card-body card-form p-4">
                                 <h3 class="fs-4 mb-1">Job Details</h3>
                                 <div class="row">
 
                                     <div class="col-md-6 mb-4">
-                                        <label for="" class="mb-2">Application Start<span class="req">*</span></label>
+                                        <label for="application_start" class="mb-2">Application Start<span class="req">*</span></label>
                                         <input type="date" id="application_start" name="application_start" class="form-control">
                                         <p></p>
                                     </div>
@@ -24,7 +25,7 @@
                                     </div>
 
                                     <div class="col-md-6 mb-4">
-                                        <label for="" class="mb-2">Title<span class="req">*</span></label>
+                                        <label for="title" class="mb-2">Title<span class="req">*</span></label>
                                         <input type="text" placeholder="Job Title" id="title" name="title" class="form-control">
                                         <p></p>
                                     </div>
@@ -58,7 +59,7 @@
                                         <p></p>
                                     </div>
                                     <div class="col-md-6  mb-4">
-                                        <label for="" class="mb-2">Vacancy<span class="req">*</span></label>
+                                        <label for="vacancy" class="mb-2">Vacancy<span class="req">*</span></label>
                                         <input type="number" min="1" placeholder="Vacancy" id="vacancy" name="vacancy" class="form-control">
                                         <p></p>
                                     </div>
@@ -66,33 +67,35 @@
 
                                 <div class="row">
                                     <div class="mb-4 col-md-6">
-                                        <label for="" class="mb-2">Salary</label>
+                                        <label for="salary" class="mb-2">Salary</label>
                                         <input type="text" placeholder="Salary" id="salary" name="salary" class="form-control">
                                     </div>
 
                                     <div class="mb-4 col-md-6">
-                                        <label for="" class="mb-2">Location<span class="req">*</span></label>
+                                        <label for="location" class="mb-2">Location<span class="req">*</span></label>
                                         <input type="text" placeholder="Location" id="location" name="location" class="form-control">
                                         <p></p>
                                     </div>
                                 </div>
 
+
+
                                 <div class="mb-4">
-                                    <label for="" class="mb-2">Description<span class="req">*</span></label>
-                                    <textarea class="textarea" name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
-                                    <p></p>
+                                    <label for="description" class="mb-2">Description<span class="req">*</span></label>
+                                    <textarea class="textarea" name="description" id="description" cols="100" rows="5" placeholder="Description"></textarea>
+
+                                </div>
+                                <label for="benefits" class="mb-2">Benefits</label>
+                                <div class="mb-4 ">
+                                    <textarea class="textarea" name="benefits" id="benefits" cols="100" rows="5" placeholder="Benefits"></textarea>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="" class="mb-2">Benefits</label>
-                                    <textarea class="textarea" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits"></textarea>
+                                    <label for="responsibility" class="mb-2">Responsibility</label>
+                                    <textarea class="textarea" name="responsibility" id="responsibility" cols="100" rows="5" placeholder="Responsibility"></textarea>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="" class="mb-2">Responsibility</label>
-                                    <textarea class="textarea" name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"></textarea>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="" class="mb-2">Qualifications</label>
-                                    <textarea class="textarea" name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications"></textarea>
+                                    <label for="qualifications" class="mb-2">Qualifications</label>
+                                    <textarea class="textarea" name="qualifications" id="qualifications" cols="100" rows="5" placeholder="Qualifications"></textarea>
                                 </div>
 
                                 <div class="mb-4">

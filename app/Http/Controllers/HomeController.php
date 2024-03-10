@@ -77,15 +77,7 @@ class HomeController extends Controller
 
         Mail::to("mail.w3web@gmail.com")->send(new ContactFormEmail($mailData));
 
-//        $message = 'Email sent successfully!';
-
-//        session()->flash('success',$message);
-//
-//        return response()->json([
-//            'status' => true,
-//            'message' => $message
-//        ]);
-        return redirect()->back()->with('success', 'Email sent successfully!');
+        return redirect()->back()->with('success', 'Message sent successfully! Our Team will Contact With you, As Soon as Possible. Thank You For Contact With Us.');
     }
 
 

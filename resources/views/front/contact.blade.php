@@ -19,7 +19,7 @@
 
     <section id="contact" class="mt-5 paralax-mf footer-paralax "></div>
         <div class="container">
-
+            @include('front.message')
             <div class="row">
                 <div class="col-sm-12">
                     <div class="contact-mf">

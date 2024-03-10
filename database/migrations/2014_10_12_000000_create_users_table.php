@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('designation')->nullable();
             $table->string('mobile')->nullable();
             $table->enum('role',['admin', 'employee','candidate'])->default('candidate');
-            $table->enum('is_paid',[0,1])->default('0');
+            $table->enum('company_status',[0,1])->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -72,7 +72,7 @@ class EmployeeController extends Controller
 
 
 //        Method to go Edit Page with Data
-        return view('front.account.job.edit',[
+        return view('employee.job.edit',[
             'categories' => $categories,
             'jobTypes' => $jobTypes,
             'job' => $job,

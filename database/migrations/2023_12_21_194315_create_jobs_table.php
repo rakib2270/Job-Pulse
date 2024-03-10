@@ -34,7 +34,7 @@ return new class extends Migration
             $table->enum('is_featured',[0,1])->default('0');
             $table->enum('is_popular',[0,1])->default('0');
             $table->enum('status',[0,1])->default('1');
-            $table->enum('company_status',[0,1])->default('0');
+            $table->enum('company_status',[0,1])->default('1');
             $table->timestamps();
         });
     }
