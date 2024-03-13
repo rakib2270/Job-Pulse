@@ -39,7 +39,11 @@
                         </div>
                             <div class="justify-content-between d-flex">
                             <button type="submit" class="btn btn-primary mt-2">Get Magic Link</button>
+                                <div class="mt-4 text-center">
+                                    <a  href="{{ route('account.login') }}">Back</a>
+                                </div>
                             </div>
+
                     </form>
                 </div>
             </div>

@@ -142,10 +142,34 @@
                                     <label for="" class="mb-2">Website</label>
                                     <input type="text" placeholder="Website" id="website" name="website" class="form-control">
                                 </div>
+                                @if(Auth::user()->is_paid == "1")
+                                    <div class="mb-4 col-md-6">
+                                        <label for="">Featured Job? <span class="req">*</span></label>
+                                        <select name="is_featured" id="is_featured"  class="form-control" required>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p></p>
+                                    </div>
+                                    <div class="mb-4 col-md-6">
+                                        <label for="">Popular Job? <span class="req">*</span></label>
+                                        <select name="is_popular" id="is_popular" class="form-control" required>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p></p>
+                                    </div>
+                                @elseif(Auth::user()->is_paid == "0")
+                                    <input type="hidden" name="is_featured" value="0">
+                                    <input type="hidden" name="is_popular" value="0">
+                                @endif
+
+
+                                <div class="card-footer  p-4">
+                                    <button type="submit" class="btn btn-primary">Save Job</button>
+                                </div>
                             </div>
-                            <div class="card-footer  p-4">
-                                <button type="submit" class="btn btn-primary">Save Job</button>
-                            </div>
+
                         </div>
                     </form>
 

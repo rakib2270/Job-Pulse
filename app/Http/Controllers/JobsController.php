@@ -11,6 +11,7 @@ use App\Models\SavedJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class JobsController extends Controller
@@ -19,7 +20,6 @@ class JobsController extends Controller
     public function index(Request $request) {
         $categories = Category::where('status','=','1')->get();
         $jobTypes = JobType::where('status','=','1')->get();
-
         $jobs = Job::where('company_status','1')->where('status','1');
 
         // Search using keyword
@@ -77,6 +77,7 @@ class JobsController extends Controller
     // This method will show job detail page
     public function detail($id) {
 
+
         $job = Job::where([
             'id' => $id,
             'status' => '1'
@@ -95,12 +96,17 @@ class JobsController extends Controller
         }
 
 
+
+
         // fetch applicants
 
         $applications = JobApplication::where('job_id',$id)->with('user')->get();
 
 
-        return view('front.jobDetail',[ 'job' => $job,
+
+
+        return view('front.jobDetail',[
+            'job' => $job,
             'count' => $count,
             'applications' => $applications
         ]);
@@ -108,7 +114,8 @@ class JobsController extends Controller
 
     public function applyJob(Request $request) {
         $id = $request->id;
-
+        $user = Auth::user();
+        $resume = $user->resume;
         $job = Job::where('id',$id)->first();
 
         // If job not found in db
@@ -152,6 +159,7 @@ class JobsController extends Controller
         $application->job_id = $id;
         $application->user_id = Auth::user()->id;
         $application->employer_id = $employer_id;
+        $application->user_resume = $resume;
         $application->applied_date = now();
         $application->save();
 

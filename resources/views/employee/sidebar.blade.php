@@ -26,11 +26,9 @@
                 <a href="#">Plugins</a>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-               <h6  >  <a href="#">Go To Pro</a></h6>
-            </li>
 
         </ul>
+
         <div style="margin-top: 300px" class="list-group-item d-flex justify-content-between align-items-center p-3">
             <a href="{{ route('account.logout') }}">Logout</a>
         </div>

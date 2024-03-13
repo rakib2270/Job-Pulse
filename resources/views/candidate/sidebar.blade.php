@@ -7,9 +7,7 @@
             <li class="list-group-item d-flex justify-content-between p-3">
                 <a href="{{ route('account.profile') }}">Account</a>
             </li>
-            <li class="list-group-item d-flex justify-content-between p-3">
-                <a href="{{ route('resumes.showUploadForm') }}">Upload Resume</a>
-            </li>
+
              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('jobs') }}">Find Jobs</a>
             </li>

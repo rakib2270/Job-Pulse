@@ -59,7 +59,6 @@ Route::group(['prefix' => 'account'], function(){
         Route::put('/update-profile',[AccountController::class,'updateProfile'])->name('account.updateProfile');
         Route::get('/logout',[AccountController::class,'logout'])->name('account.logout');
         Route::post('/update-profile-pic',[AccountController::class,'updateProfilePic'])->name('account.updateProfilePic');
-        Route::post('/save-job',[AccountController::class,'saveJob'])->name('account.saveJob');
         Route::get('/my-job-applications',[AccountController::class,'myJobApplications'])->name('account.myJobApplications');
         Route::post('/remove-job-application',[AccountController::class,'removeJobs'])->name('account.removeJobs');
         Route::get('/saved-jobs',[AccountController::class,'savedJobs'])->name('account.savedJobs');
@@ -134,10 +133,14 @@ Route::group(['prefix' => 'employee','middleware' => 'employee', 'admin'], funct
 
     Route::get('/dashboard',[EmployeeController::class,'index'])->name('employee.dashboard');
     Route::get('/create-job',[EmployeeController::class,'createJob'])->name('account.createJob');
+    Route::post('/save-job',[EmployeeController::class,'saveJob'])->name('account.saveJob');
     Route::get('/my-jobs',[EmployeeController::class,'myJobs'])->name('account.myJob');
     Route::get('/my-jobs/edit/{jobId}',[EmployeeController::class,'editJob'])->name('account.editJob');
     Route::post('/update-job/{jobId}',[EmployeeController::class,'updateJob'])->name('account.updateJob');
     Route::post('/delete-job',[EmployeeController::class,'deleteJob'])->name('account.deleteJob');
+    Route::get('/subscription/checkout',[EmployeeController::class, 'employeeCheckout'])->name('employee.checkout');
+    Route::put('/subscriptions/update/{user}', [EmployeeController::class, 'addSubscription'])->name('employee.addSubscription');
+    Route::post('/download-resume', [EmployeeController::class, 'downloadResume'])->name('download.resume');
 
 });
 

@@ -43,6 +43,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>Job description</h4>
@@ -77,10 +78,21 @@
                                 <a href="#" onclick="saveJob({{ $job->id }});" class="btn btn-secondary">Save</a>
                             @else
                                 <a href="javascript:void(0);" class="btn btn-secondary disabled">Login to Save</a>
+
+
                             @endif
 
                             @if (Auth::check())
-                                <a href="#" onclick="applyJob({{ $job->id }})" class="btn btn-primary">Apply</a>
+                                @if(Auth::user()->role == 'candidate')
+                                    @if(Auth::user()->resume !== null)
+                                        <a href="#" onclick="applyJob({{ $job->id }})" class="btn btn-primary">Apply</a>
+                                        @else()
+                                            <a href="{{route('account.profile')}}" class="btn btn-primary">Upload CV To Apply</a>
+
+                                        @endif
+
+                                @endif
+
                             @else
                                 <a href="javascript:void(0);" class="btn btn-primary disabled">Login to Apply</a>
                             @endif
@@ -92,9 +104,12 @@
                 </div>
 
 
+
+
+{{--                Section To See Applicants Who Are Applied in This Job--}}
+{{--                Section To See Applicants Who Are Applied in This Job--}}
                 @if (Auth::user())
                    @if (Auth::user()->id == $job->user_id)
-
 
                 <div class="card shadow border-0 mt-4">
                     <div class="job_details_header">
@@ -114,6 +129,7 @@
                                 <th>Email</th>
                                 <th>Mobile</th>
                                 <th>Applied Date</th>
+                                <th>Resume</th>
                             </tr>
                             @if ($applications->isNotEmpty())
                                 @foreach ($applications as $application)
@@ -123,6 +139,19 @@
                                     <td>{{ $application->user->mobile  }}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse($application->applied_date)->format('d M, Y') }}
+                                    </td>
+                                    <td>
+
+                                            <form action="{{ route('download.resume') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" id="filename" name="filename" value="{{ $application->user->resume }}" >
+
+                                            <div class="download">
+                                                <button class="btn btn-primary" type="submit">Download</button>
+                                            </div>
+
+                                            </form>
+
                                     </td>
                                 </tr>
                                 @endforeach
@@ -204,6 +233,8 @@ function applyJob(id){
         });
     }
 }
+
+
 
 function saveJob(id){
     $.ajax({

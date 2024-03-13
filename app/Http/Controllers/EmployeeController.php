@@ -6,18 +6,24 @@ use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobType;
+use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
     public function index() {
-        $user = Job::where('user_id', Auth::user()->id);
+
+        $user = Job::where('user_id', Auth::user());
         $activeJobs = $user->where('company_status','1')->where('status','1')->count();
         $pendingJobs = $user->where('status','0')->count();
         $applicants = JobApplication::where('employer_id', Auth::user()->id)->count();
         return view('employee.dashboard',[
+            'user' =>$user,
             'activeJobs'=>$activeJobs,
             'pendingJobs'=>$pendingJobs,
             'applicants'=>$applicants
@@ -51,6 +57,63 @@ class EmployeeController extends Controller
             'jobTypes' =>  $jobTypes,
         ]);
     }
+
+
+
+    public function saveJob(Request $request) {
+
+        $rules = [
+            'title' => 'required|min:5|max:200',
+            'category' => 'required',
+            'jobType' => 'required',
+            'vacancy' => 'required|integer',
+            'location' => 'required|max:50',
+            'description' => 'required',
+            'company_name' => 'required|min:3|max:75',
+
+        ];
+
+        $validator = Validator::make($request->all(),$rules);
+
+        if ($validator->passes()) {
+
+            $job = new Job();
+            $job->title = $request->title;
+            $job->category_id = $request->category;
+            $job->job_type_id  = $request->jobType;
+            $job->user_id = Auth::user()->id;
+            $job->vacancy = $request->vacancy;
+            $job->salary = $request->salary;
+            $job->location = $request->location;
+            $job->description = $request->description;
+            $job->benefits = $request->benefits;
+            $job->responsibility = $request->responsibility;
+            $job->qualifications = $request->qualifications;
+            $job->keywords = $request->keywords;
+            $job->experience = $request->experience;
+            $job->company_name = $request->company_name;
+            $job->company_location = $request->company_location;
+            $job->company_website = $request->website;
+            $job->is_featured = $request->is_featured;
+            $job->is_popular = $request->is_popular;
+            $job->status = "1";
+            $job->save();
+
+            session()->flash('success','Job added successfully.');
+
+            return response()->json([
+                'status' => true,
+                'errors' => []
+            ]);
+
+        } else {
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
+    }
+
 
 
 
@@ -99,6 +162,7 @@ class EmployeeController extends Controller
 
 
 //        Method To Update Data
+
         if ($validator->passes()) {
 
             $job = Job::find($id);
@@ -163,6 +227,49 @@ class EmployeeController extends Controller
 
     }
 
+
+public function employeeCheckout(){
+        return view('employee.checkout');
+    }
+
+
+
+public function addSubscription(Request $request, $userId)
+{
+    $userIdFromRequest = $request->input('user_id');
+
+    $user = User::find($userIdFromRequest);
+
+    if ($user == null) {
+        return redirect()>route('employee.dashboard')->with('error','User Not Found');
+
+    } else{
+        $paidId = '1';
+        User::where('id',$userId)->update(['is_paid' => $paidId]);
+        Job::where('user_id',$userId)->update(['is_featured' => $paidId, 'is_popular'=>$paidId]);
+        session()->flash('success','Your Are Added Subscription Successfully.');
+        return redirect()->route('employee.dashboard');
+    }
+}
+
+
+    public function downloadResume(Request $request)
+    {
+
+        // Retrieve the filename from the request
+        $filename = $request->input('filename');
+        $file = storage_path('app/resumes/'.$filename);
+
+        // Validate filename
+        if (!$filename) {
+            return response()->json(['error' => 'OOPS.! Resume Not Found!'], 400);
+        } else{
+
+            return response()->download($file);
+        }
+
+
+    }
 
 
 
