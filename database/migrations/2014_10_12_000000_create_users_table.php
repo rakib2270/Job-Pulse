@@ -18,10 +18,13 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->nullable();
+            $table->string('resume')->nullable();
             $table->string('designation')->nullable();
             $table->string('mobile')->nullable();
             $table->enum('role',['admin', 'employee','candidate'])->default('candidate');
-            $table->enum('company_status',[0,1])->default('0');
+            $table->enum('company_status',[0,1])->default('1');
+            $table->enum('is_paid',[0,1])->default('0');
+
             $table->rememberToken();
             $table->timestamps();
         });

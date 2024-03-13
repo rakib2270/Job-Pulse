@@ -3,7 +3,6 @@
 @section('dbContent')
     <h3 style="text-align: center; text-decoration: underline" >Employee List </h3>
 
-
     <!-- Table with panel -->
 
     <table id="example" class="display" style="width:100%">

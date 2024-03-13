@@ -52,6 +52,10 @@ class CandidateController extends Controller
     }
 
 
+    public function detailsPage (){
+        return view('candidate.applicant-details');
+    }
+
 
 
 }

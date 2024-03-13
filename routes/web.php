@@ -37,7 +37,6 @@ Route::post('/apply-job',[JobsController::class,'applyJob'])->name('applyJob');
 Route::post('/save-job',[JobsController::class,'saveJob'])->name('saveJob');
 
 
-
 // Guest Routes
 Route::group(['prefix' => 'account'], function(){
     // Guest Route
@@ -151,6 +150,7 @@ Route::group(['prefix' => 'candidate','middleware' => 'candidate'], function(){
     Route::get('/dashboard',[CandidateController::class,'index'])->name('candidate.dashboard');
     Route::get('/upload-resume', [CandidateController::class, 'showUploadForm'])->name('resumes.showUploadForm');
     Route::post('/upload-resume', [CandidateController::class, 'upload'])->name('resume.upload');
+    Route::get('/applicant/details',[CandidateController::class, 'detailsPage'])->name('candidate.details');
 
 });
 
